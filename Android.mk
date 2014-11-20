@@ -14,12 +14,12 @@
 # limitations under the License.
 #
 
-ifeq ($(TARGET_SOC), exynos5420)
-exynos5420_dirs := \
+ifeq ($(TARGET_SOC), exynos5430)
+exynos5430_dirs := \
 	gralloc \
-	mobicore \
-	libhwjpeg 
+	libhwjpeg \
+	mobicore
 
-include $(call all-named-subdir-makefiles,$(exynos5420_dirs))
+include $(call all-named-subdir-makefiles,$(exynos5430_dirs))
 
 endif
