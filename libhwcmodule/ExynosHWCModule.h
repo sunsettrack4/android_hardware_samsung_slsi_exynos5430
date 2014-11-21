@@ -16,11 +16,13 @@
 
 #ifndef ANDROID_EXYNOS_HWC_MODULE_H_
 #define ANDROID_EXYNOS_HWC_MODULE_H_
+
 #include <hardware/hwcomposer.h>
-#include <linux/s3c-fb.h>
+#include "decon_fb.h"
+
 const size_t GSC_DST_W_ALIGNMENT_RGB888 = 16;
 const size_t GSC_DST_CROP_W_ALIGNMENT_RGB888 = 1;
-#define VSYNC_DEV_NAME  "/sys/devices/platform/exynos-sysmmu.11/exynos5-fb.1/vsync"
+#define VSYNC_DEV_NAME  "/sys/devices/13800000.decon_fb/vsync"
 #define HWC_DYNAMIC_RECOMPOSITION
 #define SKIP_STATIC_LAYER_COMP
 #define USES_ONLY_GSC0_GSC1
@@ -29,10 +31,6 @@ const size_t GSC_DST_CROP_W_ALIGNMENT_RGB888 = 1;
 #define FIMD_BURSTLEN   16
 #define TV_BLANK
 #define FIMD_BW_OVERLAP_CHECK
-#define TRY_SECOND_VSYNC_DEV
-#ifdef TRY_SECOND_VSYNC_DEV
-#define VSYNC_DEV_NAME2  "/sys/devices/platform/exynos-sysmmu.30/exynos-sysmmu.11/exynos5-fb.1/vsync"
-#endif
 
 #define FIMD_DMA_BW_BALANCE
 
