@@ -14,6 +14,8 @@
 # limitations under the License.
 #
 
+ifeq ($(TARGET_BOARD_PLATFORM), exynos5)
+ifeq ($(TARGET_SLSI_VARIANT), insignal)
 ifeq ($(TARGET_SOC), exynos5430)
 exynos5430_dirs := \
 	gralloc \
@@ -22,4 +24,6 @@ exynos5430_dirs := \
 
 include $(call all-named-subdir-makefiles,$(exynos5430_dirs))
 
+endif
+endif
 endif
