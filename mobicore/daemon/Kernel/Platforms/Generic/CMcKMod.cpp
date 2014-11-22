@@ -217,10 +217,9 @@ int CMcKMod::fcInit(uint32_t nqOffset, uint32_t nqLength, uint32_t mcpOffset,
 
     // Init MC with NQ and MCP buffer addresses
     struct mc_ioctl_init fcInitParams = {
-        .nq_offset = nqOffset,
-        .nq_length = nqLength,
-        .mcp_offset = mcpOffset,
-        .mcp_length = mcpLength
+        nq_length: nqLength,
+        mcp_offset: mcpOffset,
+        mcp_length: mcpLength
     };
 
     ret = ioctl(fdKMod, MC_IO_INIT, &fcInitParams);
@@ -531,23 +530,7 @@ mcResult_t CMcKMod::setupLog(void)
 //------------------------------------------------------------------------------
 int CMcKMod::fcExecute(addr_t startAddr, uint32_t areaLength)
 {
-    int ret = 0;
-    struct mc_ioctl_execute params = {
-        .phys_start_addr = (uint32_t)startAddr,
-        .length = areaLength
-    };
-
-    if (!isOpen()) {
-        LOG_E("no connection to kmod");
-        return MC_DRV_ERR_KMOD_NOT_OPEN;
-    }
-
-    ret = ioctl(fdKMod, MC_IO_EXECUTE, &params);
-    if (ret != 0) {
-        LOG_ERRNO("ioctl MC_IO_EXECUTE");
-    }
-
-    return ret;
+    return 0;
 }
 //------------------------------------------------------------------------------
 bool CMcKMod::checkVersion(void)
