@@ -79,12 +79,20 @@ struct s3c_fb_win_config {
 			int fence_fd;
 			int plane_alpha;
 		};
-	};
+		struct {
+			int left;
+			int top;
+			int right;
+			int bottom;
+			int enableDSU;
+		};
+ 	};
 
 	int x;
 	int y;
 	__u32 w;
 	__u32 h;
+	bool	protection;	
 };
 
 #define S3C_FB_MAX_WIN (5)
