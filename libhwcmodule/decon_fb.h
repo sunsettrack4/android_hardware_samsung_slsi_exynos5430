@@ -86,17 +86,18 @@ struct s3c_fb_win_config {
 			int bottom;
 			int enableDSU;
 		};
- 	};
+	};
 
 	int x;
 	int y;
 	__u32 w;
 	__u32 h;
-	bool	protection;	
+	bool	protection;
 };
 
 #define S3C_FB_MAX_WIN (5)
 #define S3C_WIN_UPDATE_IDX (5)
+#define DEV_DECON	6
 struct s3c_fb_win_config_data {
 	int fence;
 	struct s3c_fb_win_config config[S3C_FB_MAX_WIN + 1];
