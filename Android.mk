@@ -19,7 +19,6 @@ ifeq ($(TARGET_SLSI_VARIANT), insignal)
 ifeq ($(TARGET_SOC), exynos5430)
 exynos5430_dirs := \
 	gralloc \
-	libhwjpeg \
 	mobicore
 
 include $(call all-named-subdir-makefiles,$(exynos5430_dirs))
