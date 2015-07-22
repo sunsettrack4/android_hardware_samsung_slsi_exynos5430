@@ -139,7 +139,6 @@ int init_fb(struct private_module_t* module)
 
     int fd = -1;
     int i = 0;
-    char name[64];
 
     fd = open("/dev/graphics/fb0", O_RDWR);
     if (fd < 0) {
@@ -150,12 +149,14 @@ int init_fb(struct private_module_t* module)
     struct fb_fix_screeninfo finfo;
     if (ioctl(fd, FBIOGET_FSCREENINFO, &finfo) == -1) {
         ALOGE("Fail to get FB Screen Info");
+		close(fd);
         return -errno;
     }
 
     struct fb_var_screeninfo info;
     if (ioctl(fd, FBIOGET_VSCREENINFO, &info) == -1) {
         ALOGE("First, Fail to get FB VScreen Info");
+		close(fd);
         return -errno;
     }
 
@@ -201,6 +202,8 @@ int init_fb(struct private_module_t* module)
     }
     module->framebuffer->base = vaddr;
     memset(vaddr, 0, fbSize);
+
+	close(fd);
 
     return 0;
 }
