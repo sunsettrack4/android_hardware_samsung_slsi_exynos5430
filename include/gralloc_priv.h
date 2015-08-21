@@ -29,6 +29,10 @@
 
 #include <linux/fb.h>
 
+#define GRALLOC_USAGE_GPU_BUFFER        0x00800000
+#define GRALLOC_USAGE_PHYSICALLY_LINEAR 0x01000000
+#define GRALLOC_USAGE_PRIVATE_NONSECURE 0x02000000
+
 /*****************************************************************************/
 
 struct private_module_t;
